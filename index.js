@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
-const port = process.env.PORT;
+const port = process.env.PORT || 3002;
 const url = process.env.MONGO_URL;
 const app = express();
 const Holdingmodel = require("./models/Holdingmodels");
@@ -174,7 +174,12 @@ const bodyParser = require("body-parser");
 //   });
 //   res.send("done");
 // });
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.CLIENT_URL || "http://localhost:3000", // Use your deployed frontend URL
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 app.get("/allholdings", async (req, res) => {
   let allHolding = await Holdingmodel.find({});
