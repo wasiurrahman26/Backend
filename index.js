@@ -177,7 +177,7 @@ const bodyParser = require("body-parser");
 app.use(
   cors({
     origin: [
-      "https://your-frontend.onrender.com", // deployed
+      "https://dashboard-cnlh.onrender.com", // deployed
       "http://localhost:3000", // local frontend
       "http://localhost:3001", // local dashboard
     ],
